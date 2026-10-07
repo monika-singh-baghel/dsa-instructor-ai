@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSA Instructor AI</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">⌘</div>
+        <div><strong>DSA Instructor</strong><span>AI</span></div>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-item active" data-page="dashboard"><span>⌂</span> Dashboard</button>
+        <button class="nav-item" data-page="history"><span>↶</span> History</button>
+        <button class="nav-item" data-page="tutorials"><span>▣</span> Tutorials</button>
+        <button class="nav-item" data-page="playground"><span>›_</span> Playground</button>
+        <button class="nav-item" data-page="settings"><span>⚙</span> Settings</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="mini-card"><b>DSA Instructor AI</b><small>Powered by Gemini API</small></div>
+        <div class="status"><i></i> AI instructor ready</div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="mobile-brand">DSA Instructor <span>AI</span></div>
+        <div class="top-actions">
+          <button id="themeBtn" class="ghost-btn">◐ <span>Dark Mode</span></button>
+          <button id="profileBtn" class="profile-btn">● <span>Profile</span></button>
+        </div>
+      </header>
+
+      <section id="dashboard" class="page active-page">
+        <div class="hero-row">
+          <div>
+            <p class="eyebrow">YOUR PERSONAL CODING MENTOR</p>
+            <h1>DSA <span>Instructor AI</span></h1>
+            <p class="subtitle">Learn Data Structures & Algorithms with simple explanations, C++ code, dry runs and interview-focused guidance.</p>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-icon purple">⌁</div><strong id="questionCount">0</strong><span>Questions Asked</span></div>
+          <div class="stat-card"><div class="stat-icon cyan">A↔Z</div><strong>1</strong><span>AI Instructor</span></div>
+          <div class="stat-card"><div class="stat-icon blue">C++</div><strong>∞</strong><span>Problems You Can Ask</span></div>
+        </div>
+
+        <div class="two-col">
+          <div class="panel topics-panel">
+            <div class="panel-head"><h2>🔥 Popular Topics</h2><span>Try one</span></div>
+            <div class="topic-list">
+              <button class="topic">Arrays <b>›</b></button>
+              <button class="topic">Binary Search <b>›</b></button>
+              <button class="topic">Sliding Window <b>›</b></button>
+              <button class="topic">Recursion <b>›</b></button>
+              <button class="topic">Trees & BST <b>›</b></button>
+              <button class="topic">Graphs <b>›</b></button>
+              <button class="topic">Dynamic Programming <b>›</b></button>
+            </div>
+          </div>
+
+          <div class="panel quick-panel">
+            <div class="panel-head"><h2>⚡ Quick Start</h2><span>Beginner friendly</span></div>
+            <div class="quick-grid">
+              <button data-prompt="Explain binary search from zero with intuition, C++ code, dry run, and complexity.">Binary Search</button>
+              <button data-prompt="Teach me sliding window from zero with a simple example in C++.">Sliding Window</button>
+              <button data-prompt="Explain recursion to a complete beginner with a simple C++ example.">Recursion</button>
+              <button data-prompt="Explain how to detect a cycle in a linked list in C++.">Linked List</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel ask-panel">
+          <div class="panel-head"><h2>❔ Ask a DSA Question</h2><span>Gemini-powered</span></div>
+          <div class="info-box"><b>How to use:</b> Ask any DSA or coding question. The instructor will explain the idea first, then approach, C++ code, dry run and complexity.</div>
+          <label for="question">Your Coding Question</label>
+          <textarea id="question" placeholder="e.g. Explain binary search, solve Two Sum in C++, or teach me sliding window..."></textarea>
+          <div class="ask-footer">
+            <span>Tip: You can ask follow-up questions after every answer.</span>
+            <button id="askBtn" class="primary-btn">Ask Instructor <span>→</span></button>
+          </div>
+        </div>
+
+        <div id="answerPanel" class="panel answer-panel hidden">
+          <div class="answer-head"><h2>🤖 Instructor Answer</h2><button id="copyBtn" class="ghost-btn">Copy</button></div>
+          <div id="answer" class="answer-content"></div>
+        </div>
+      </section>
+
+      <section id="history" class="page">
+        <div class="page-title"><div><p class="eyebrow">YOUR ACTIVITY</p><h1>Question History</h1><p>Questions you asked in this browser session.</p></div><button id="clearHistory" class="ghost-btn">Clear History</button></div>
+        <div id="historyList" class="history-list"></div>
+      </section>
+
+      <section id="tutorials" class="page">
+        <div class="page-title"><div><p class="eyebrow">LEARN STEP BY STEP</p><h1>DSA Tutorials</h1><p>Use the instructor to study these interview-focused topics.</p></div></div>
+        <div class="tutorial-grid" id="tutorialGrid"></div>
+      </section>
+
+      <section id="playground" class="page">
+        <div class="page-title"><div><p class="eyebrow">PRACTICE</p><h1>DSA Playground</h1><p>Start with a problem and ask the instructor for guidance.</p></div></div>
+        <div class="playground-card">
+          <select id="difficulty"><option>Easy</option><option>Medium</option><option>Hard</option></select>
+          <button id="randomProblem" class="primary-btn">Generate Practice Prompt</button>
+          <div id="problemPrompt" class="problem-prompt">Choose a difficulty and generate a practice prompt.</div>
+        </div>
+      </section>
+
+      <section id="settings" class="page">
+        <div class="page-title"><div><p class="eyebrow">PREFERENCES</p><h1>Settings</h1><p>Small preferences for your learning experience.</p></div></div>
+        <div class="settings-card">
+          <div><b>Dark mode</b><p>Switch between dark and light appearance.</p></div><button id="themeBtn2" class="toggle">Toggle</button>
+        </div>
+        <div class="settings-card"><div><b>Model</b><p>Gemini model configured by the server.</p></div><span id="modelBadge" class="badge">Loading…</span></div>
+        <div class="settings-card"><div><b>API key security</b><p>Your key is read only by the Node.js backend from <code>.env</code>.</p></div><span class="badge green">Protected</span></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="profileModal" class="modal hidden"><div class="modal-card"><button id="closeModal" class="close">×</button><div class="avatar">M</div><h2>DSA Learner</h2><p>Keep practicing. Every problem is a step forward.</p><div class="profile-stat"><span>Questions this session</span><b id="modalCount">0</b></div></div></div>
+  <script src="/answer-renderer.js"></script>
+  <script src="/app.js"></script>

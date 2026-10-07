@@ -1,0 +1,15 @@
+{
+  "name": "dsa-instructor-ai",
+  "version": "1.0.0",
+  "description": "AI-powered DSA Instructor inspired by a Coding Instructor dashboard UI",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "@google/genai": "latest",
+    "dotenv": "latest",
+    "express": "latest"
+  }
+}
